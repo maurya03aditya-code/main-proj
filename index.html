@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="Saiyara ringtone _ #saiyaara  dhun ringtone_ #arijit singh #dhun #trend  #ahaanpanday #instrumental.mp3" type="audio/mpeg">
+</audio>
+
+<div class="paper heart">
+  <img src="WhatsApp_Image_2026-02-08_at_20.24.08-removebg-preview.png" alt="circle image">
+</div>
+
+<div class="paper image">
+  <p>Happy birthday</p>
+  <p>sujataaa....😍</p>
+  <img src="WhatsApp Image 2026-02-28 at 15.00.24.jpeg">
+</div>
+
+<div class="paper image">
+  <img src="Snapchat-2016771361.jpg.jpeg">
+</div>
+
+<div class="paper image">
+  <p>How can be</p>
+  <p>someone so cute ❤️</p>
+  <img src="Snapchat-1801242799.jpg (1).jpeg">
+</div>
+
+<div class="paper red">
+  <p>And My Favorite</p>
+  <p>Person 😍</p>
+</div>
+
+<div class="paper">
+  <p>You are Cute</p>
+  <p>Amazing ❤️</p>
+</div>
+
+<div class="paper">
+  <p>Drag the papers to move 💌</p>
+</div>
+
+<script>
+const music = document.getElementById("bgMusic");
+
+document.addEventListener("click", () => {
+  music.play();
+  music.volume = 0.5;
+}, { once: true });
+
+
+const papers = document.querySelectorAll(".paper");
+
+papers.forEach(paper => {
+  let offsetX = 0, offsetY = 0, isDragging = false;
+
+  const startDrag = (e) => {
+    isDragging = true;
+    const rect = paper.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    offsetX = clientX - rect.left;
+    offsetY = clientY - rect.top;
+    paper.style.cursor = "grabbing";
+  };
+
+  const drag = (e) => {
+    if (!isDragging) return;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    paper.style.left = clientX - offsetX + "px";
+    paper.style.top = clientY - offsetY + "px";
+  };
+
+  const stopDrag = () => {
+    isDragging = false;
+    paper.style.cursor = "grab";
+  };
+
+  paper.addEventListener("mousedown", startDrag);
+  paper.addEventListener("mousemove", drag);
+  paper.addEventListener("mouseup", stopDrag);
+
+  paper.addEventListener("touchstart", startDrag);
+  paper.addEventListener("touchmove", drag);
+  paper.addEventListener("touchend", stopDrag);
+});
+</script>
+
+</body>
+</html>
